@@ -1,0 +1,14 @@
+D:\c#\Appointment\Appointment\obj\Debug\Appointment.csproj.AssemblyReference.cache
+D:\c#\Appointment\Appointment\obj\Debug\Appointment.Form1.resources
+D:\c#\Appointment\Appointment\obj\Debug\Appointment.Properties.Resources.resources
+D:\c#\Appointment\Appointment\obj\Debug\Appointment.csproj.GenerateResource.cache
+D:\c#\Appointment\Appointment\obj\Debug\Appointment.csproj.CoreCompileInputs.cache
+D:\c#\Appointment\Appointment\bin\Debug\Appointment.exe.config
+D:\c#\Appointment\Appointment\bin\Debug\Appointment.exe
+D:\c#\Appointment\Appointment\bin\Debug\Appointment.pdb
+D:\c#\Appointment\Appointment\obj\Debug\Appointment.exe
+D:\c#\Appointment\Appointment\obj\Debug\Appointment.pdb
+D:\c#\Appointment\Appointment\obj\Debug\Appointment.Form2.resources
+D:\c#\Appointment\Appointment\obj\Debug\Appointment.AddAppointment.resources
+D:\c#\Appointment\Appointment\obj\Debug\Appointment.AddClient.resources
+D:\c#\Appointment\Appointment\obj\Debug\Appointment.DoctorAdd.resources
