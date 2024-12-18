@@ -31,5 +31,12 @@ namespace Appointment
             add.Show();
             this.Hide();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            DoctorAdd dc = new DoctorAdd();
+            dc.Show();
+            this.Hide();
+        }
     }
 }

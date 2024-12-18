@@ -33,6 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.DoctorName = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.Back = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Submit
@@ -82,11 +83,22 @@
             this.button1.Text = "Back";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // Back
+            // 
+            this.Back.Location = new System.Drawing.Point(60, 23);
+            this.Back.Name = "Back";
+            this.Back.Size = new System.Drawing.Size(142, 52);
+            this.Back.TabIndex = 5;
+            this.Back.Text = "Back";
+            this.Back.UseVisualStyleBackColor = true;
+            this.Back.Click += new System.EventHandler(this.Back_Click);
+            // 
             // DoctorAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1195, 493);
+            this.Controls.Add(this.Back);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.DoctorName);
             this.Controls.Add(this.label2);
@@ -106,5 +118,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox DoctorName;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Back;
     }
 }

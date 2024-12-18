@@ -16,5 +16,12 @@ namespace Appointment
         {
             InitializeComponent();
         }
+
+        private void Back_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Form2 f = new Form2();
+            f.Show();
+        }
     }
 }
