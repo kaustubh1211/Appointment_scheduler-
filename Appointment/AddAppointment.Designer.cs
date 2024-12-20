@@ -42,6 +42,8 @@
             this.back = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -78,12 +80,13 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(529, 389);
+            this.button1.Location = new System.Drawing.Point(582, 410);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(277, 67);
+            this.button1.Size = new System.Drawing.Size(277, 90);
             this.button1.TabIndex = 11;
             this.button1.Text = "submit";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -149,8 +152,12 @@
             this.dateTimePicker2.ImeMode = System.Windows.Forms.ImeMode.On;
             this.dateTimePicker2.Location = new System.Drawing.Point(582, 322);
             this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dateTimePicker2.ShowUpDown = true;
             this.dateTimePicker2.Size = new System.Drawing.Size(386, 22);
             this.dateTimePicker2.TabIndex = 25;
+            this.dateTimePicker2.Value = new System.DateTime(2024, 12, 20, 0, 0, 0, 0);
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // AddAppointment
             // 
@@ -191,5 +198,7 @@
         private System.Windows.Forms.Button back;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Timer timer4;
     }
 }

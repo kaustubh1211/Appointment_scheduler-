@@ -8,12 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Appointment.Model;
 
 namespace Appointment
 {
     public partial class AddAppointment : Form
     {
+        List<ClientAdd> ca = new List<ClientAdd>();
+
+        List<AddDoctor> da= new List<AddDoctor>();
+
         public AddAppointment()
         {
             InitializeComponent();
@@ -66,43 +73,125 @@ namespace Appointment
             using (SqlConnection _con = new SqlConnection(connectionString))
             {
 
-                string query = " SELECT DOCTOR_NAME FROM DOCTOR";
+                string query = " SELECT * FROM CLIENT_TABLE";
                 
                 using (SqlCommand _cmd = new SqlCommand(query, _con))
                 {
 
 
 
-                    //DataTable dt = new DataTable();
-                    //SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+                    DataTable dt = new DataTable();
+                   SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
                     _con.Open();
-                    SqlDataReader reader = _cmd.ExecuteReader();
+                 
 
-                    // _dap.Fill(dt);
+                    _dap.Fill(dt);
 
-                    while (reader.Read())
+              
+                    foreach(DataRow row in dt.Rows)
                     {
-                        AddDoctor(reader["doctor_name"].ToString());
+                        ClientAdd obj = new ClientAdd();
+                        obj.client_name = row["first_name"].ToString();
+                        obj.client_id = Convert.ToInt32(row["client_id"]);
+
+                        ca.Add(obj);
+                        comboBox1.Items.Add(row["first_name"].ToString());
                     }
 
-                    reader.Close();
-
+                    _con.Close();
                 }
-                string quey2 = "SELECT FIRST_NAME FROM CLIENT_TABLE";
+
+
+
+                string quey2 = "SELECT * FROM DOCTOR";
                 using (SqlCommand _cmd =new SqlCommand(quey2, _con))
                 {
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+                    _con.Open();
 
-                    SqlDataReader reader = _cmd.ExecuteReader();
-                    while (reader.Read())
+
+                    _dap.Fill(dt);
+
+                    foreach (DataRow row in dt.Rows )
                     {
-                        AddClient(reader["FIRST_NAME"].ToString());
+                        AddDoctor obj = new AddDoctor();
+                        obj.doctor_name = row["doctor_name"].ToString();
+                        obj.doctor_id = Convert.ToInt32(row["doctor_id"]);
+
+                        da.Add(obj);
+                        comboBox2.Items.Add(row["doctor_name"].ToString());
                     }
-                    _con.Close();
+                    
                 }
             }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int client_id;
+            int doctor_id;
+            DateTime date;
+            DateTime time;
+            client_id = comboBox2.SelectedIndex;
+            doctor_id   = comboBox1.SelectedIndex;
+            date = dateTimePicker1.Value;
+            time = dateTimePicker2.Value;
+
+
+            string connectionString = "server=LAPTOP-VKSFE2LA\\SQLEXPRESS; database= Appointment_Schedular; Trusted_Connection=true; ";
+
+            using (SqlConnection _con = new SqlConnection(connectionString))
+            {
+
+                string query = "INSERT INTO APPOINTMENT_TABLE(CLIENT_ID , DOCTOR_ID , APPOINTMENT_DATE, APPOINTMENT_TIME) values(@client_id , @doctor_id , @date, @time)";
+
+
+                using (SqlCommand _cmd = new SqlCommand(query, _con))
+                {
+
+
+
+                    _cmd.Parameters.AddWithValue("@client_id ", client_id);
+                    _cmd.Parameters.AddWithValue("@doctor_id ", doctor_id);
+                    _cmd.Parameters.AddWithValue("@date ", date);
+                    _cmd.Parameters.AddWithValue("@time ", time);
+
+
+                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+
+
+                    _con.Open();
+                    int isWorking = _cmd.ExecuteNonQuery();
+
+
+                    _con.Close();
+
+                    if (isWorking > 0)
+                    {
+                        MessageBox.Show("Data Insertes Succesfully");
+               
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Data is not Inserted");
+
+                    }
+
+
+                }
+
+            }
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
 
         }
