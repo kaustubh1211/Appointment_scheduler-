@@ -93,7 +93,7 @@
             // 
             // Form1
             // 
-            this.BackgroundImage = global::Appointment.Properties.Resources.national_doctor_s_day_hand_drawn_background_vector;
+            this.BackgroundImage = global::Appointment.Properties.Resources._158887222_105542401;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1182, 693);
             this.Controls.Add(this.textBox2);

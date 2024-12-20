@@ -118,8 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="158887222_10554240" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\158887222_10554240.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="client" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\client.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="new(2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\new(2).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="national-doctor-s-day-hand-drawn-background-vector" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\national-doctor-s-day-hand-drawn-background-vector.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -127,7 +133,7 @@
   <data name="national-doctor-s-day-hand-drawn-background-vector1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\national-doctor-s-day-hand-drawn-background-vector1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="new(2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\new(2).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="158887222_105542401" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\158887222_105542401.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
