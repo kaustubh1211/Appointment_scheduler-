@@ -38,5 +38,12 @@ namespace Appointment
             dc.Show();
             this.Hide();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            ViewAppointments ad = new ViewAppointments();
+            ad.Show();
+            this.Hide();
+        }
     }
 }

@@ -12,6 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using Appointment.Model;
+using System.Net.Mail;
 
 namespace Appointment
 {
@@ -91,11 +92,16 @@ namespace Appointment
                     foreach(DataRow row in dt.Rows)
                     {
                         ClientAdd obj = new ClientAdd();
+                        
+
                         obj.client_name = row["first_name"].ToString();
-                        obj.client_id = Convert.ToInt32(row["client_id"]);
+                        obj.client_id = Convert.ToInt64(row["client_id"]);
 
                         ca.Add(obj);
-                        comboBox1.Items.Add(row["first_name"].ToString());
+                        
+                        comboBox1.Items.Add(row["first_name"].ToString()); 
+                     
+                        
                     }
 
                     _con.Close();
@@ -121,6 +127,7 @@ namespace Appointment
 
                         da.Add(obj);
                         comboBox2.Items.Add(row["doctor_name"].ToString());
+                        
                     }
                     
                 }
@@ -132,64 +139,58 @@ namespace Appointment
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        
+private void button1_Click(object sender, EventArgs e)
         {
             int client_id;
             int doctor_id;
             DateTime date;
             DateTime time;
             client_id = comboBox2.SelectedIndex;
-            doctor_id   = comboBox1.SelectedIndex;
+            doctor_id = comboBox1.SelectedIndex;
             date = dateTimePicker1.Value;
             time = dateTimePicker2.Value;
 
-
             string connectionString = "server=LAPTOP-VKSFE2LA\\SQLEXPRESS; database= Appointment_Schedular; Trusted_Connection=true; ";
+            string clientEmail = string.Empty;
 
             using (SqlConnection _con = new SqlConnection(connectionString))
             {
+                // Step 1: Fetch the Client's Email Address
+           
 
-                string query = "INSERT INTO APPOINTMENT_TABLE(CLIENT_ID , DOCTOR_ID , APPOINTMENT_DATE, APPOINTMENT_TIME) values(@client_id , @doctor_id , @date, @time)";
-
-
+                // Step 2: Insert Appointment into Appointment Table
+                string query = "INSERT INTO APPOINTMENT_TABLE(CLIENT_ID, DOCTOR_ID, APPOINTMENT_DATE, APPOINTMENT_TIME) VALUES(@client_id, @doctor_id, @date, @time)";
                 using (SqlCommand _cmd = new SqlCommand(query, _con))
                 {
-
-
-
-                    _cmd.Parameters.AddWithValue("@client_id ", client_id);
-                    _cmd.Parameters.AddWithValue("@doctor_id ", doctor_id);
-                    _cmd.Parameters.AddWithValue("@date ", date);
-                    _cmd.Parameters.AddWithValue("@time ", time);
-
-
-                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
-
+                    _cmd.Parameters.AddWithValue("@client_id", client_id);
+                    _cmd.Parameters.AddWithValue("@doctor_id", doctor_id);
+                    _cmd.Parameters.AddWithValue("@date", date);
+                    _cmd.Parameters.AddWithValue("@time", time);
 
                     _con.Open();
                     int isWorking = _cmd.ExecuteNonQuery();
-
-
                     _con.Close();
 
                     if (isWorking > 0)
                     {
-                        MessageBox.Show("Data Insertes Succesfully");
-               
+                        MessageBox.Show("Appointment Scheduled Successfully");
 
+                        // Step 3: Send Email Notification
+                    
                     }
                     else
                     {
-
                         MessageBox.Show("Data is not Inserted");
-
                     }
-
-
                 }
-
             }
         }
+
+        // Function to Send Email
+     
+
+
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {

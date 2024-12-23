@@ -18,3 +18,4 @@ D:\c#\Appointment\Appointment\bin\Debug\NodaTime.pdb
 D:\c#\Appointment\Appointment\bin\Debug\NodaTime.xml
 D:\c#\Appointment\Appointment\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\c#\Appointment\Appointment\obj\Debug\Appointment.csproj.CopyComplete
+D:\c#\Appointment\Appointment\obj\Debug\Appointment.ViewAppointments.resources

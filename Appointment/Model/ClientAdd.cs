@@ -16,7 +16,7 @@ namespace Appointment.Model
 
 
         public string client_name { get; set; }
-        public int client_id { get; set;}
+        public long client_id { get; set;}
 
 
     }

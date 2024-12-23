@@ -37,8 +37,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(336, 146);
+            this.label1.Location = new System.Drawing.Point(345, 146);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(245, 32);
             this.label1.TabIndex = 0;
@@ -48,6 +49,7 @@
             // AddApointment
             // 
             this.AddApointment.AutoSize = true;
+            this.AddApointment.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.AddApointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddApointment.Location = new System.Drawing.Point(638, 146);
             this.AddApointment.Name = "AddApointment";
@@ -59,6 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(336, 266);
             this.label2.Name = "label2";
@@ -70,17 +73,21 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(638, 266);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(260, 32);
             this.label3.TabIndex = 3;
             this.label3.Text = "View Apppointment";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Appointment.Properties.Resources._158887222_10554240;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(1157, 450);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

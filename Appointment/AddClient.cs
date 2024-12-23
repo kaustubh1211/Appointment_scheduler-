@@ -20,24 +20,19 @@ namespace Appointment
 
         private void Email_Click(object sender, EventArgs e)
         {
+         
+        }
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            string email = textBox3.Text.Trim();
 
+            // Check if the email is empty
+         
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
-            String phoneno= textBox4.Text.Trim();
-            if(!System.Text.RegularExpressions.Regex.IsMatch(phoneno , @"^\d*$"))
-            {
-                MessageBox.Show("Values must be number");
-                
-                textBox4.Clear();
-            }
-            if (phoneno.Length > 9)
-            {
-                MessageBox.Show("Please enter valid 10 number");
-                textBox4.Clear();
-
-            }
+         
         }
 
         private void AddClient_Load(object sender, EventArgs e)
@@ -83,10 +78,25 @@ namespace Appointment
             if (Email == "")
             {
 
-                MessageBox.Show("First name is require");
+                MessageBox.Show("Email  is require");
                 textBox3.Focus();
                 return;
             }
+          
+                string email = textBox3.Text.Trim();
+
+              
+               
+
+                // Validate the email format using regex
+                if (!System.Text.RegularExpressions.Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                {
+                    MessageBox.Show("Please enter a valid email address.");
+                    textBox3.Clear();
+                    textBox3.Focus();
+                }
+           
+
             if (phone == "")
             {
 
@@ -94,7 +104,21 @@ namespace Appointment
                 textBox4.Focus();
                 return;
             }
+            String phoneno = textBox4.Text.Trim();
+            if (!System.Text.RegularExpressions.Regex.IsMatch(phoneno, @"^\d*$"))
+            {
+                MessageBox.Show("Values must be number");
 
+                textBox4.Clear();
+                textBox4.Focus();
+            }
+            if (phoneno.Length != 10)
+            {
+                MessageBox.Show("Please enter valid 10 number");
+                textBox4.Clear();
+                textBox4.Focus();
+
+            }
             // connection string
 
             string connectionString = "server=LAPTOP-VKSFE2LA\\SQLEXPRESS; database= Appointment_Schedular; Trusted_Connection=true; ";
@@ -146,5 +170,10 @@ namespace Appointment
 
             }
         }
+
+     
+
+
+
     }
 }
