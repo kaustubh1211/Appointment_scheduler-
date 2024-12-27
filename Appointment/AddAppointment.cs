@@ -20,12 +20,12 @@ namespace Appointment
     {
         List<ClientAdd> ca = new List<ClientAdd>();
 
-        List<AddDoctor> da= new List<AddDoctor>();
+        List<AddDoctor> da = new List<AddDoctor>();
 
         public AddAppointment()
         {
             InitializeComponent();
-            
+
 
         }
 
@@ -52,88 +52,76 @@ namespace Appointment
         private void AddClient(String Client_name)
         {
             comboBox1.Items.Add(Client_name);
-            
+
         }
 
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // connection string
-            
 
-                    // check the rows for condition 
-                    // if no matching from database the dt.rows.Count is 0
 
-                }
+        }
 
         private void AddAppointment_Load(object sender, EventArgs e)
         {
-            string connectionString = "server=LAPTOP-VKSFE2LA\\SQLEXPRESS; database= Appointment_Schedular; Trusted_Connection=true; ";
 
 
-            using (SqlConnection _con = new SqlConnection(connectionString))
+            string query = " SELECT * FROM CLIENT_TABLE";
+
+            using (SqlCommand _cmd = new SqlCommand(query))
             {
 
-                string query = " SELECT * FROM CLIENT_TABLE";
-                
-                using (SqlCommand _cmd = new SqlCommand(query, _con))
+
+
+                DataTable dt = new DataTable();
+                dt = (DataTable)datatable.data(_cmd);
+
+
+
+                foreach (DataRow row in dt.Rows)
                 {
+                    ClientAdd obj = new ClientAdd();
 
 
+                    obj.client_name = row["first_name"].ToString();
+                    obj.client_id = Convert.ToInt64(row["client_id"]);
 
-                    DataTable dt = new DataTable();
-                   SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
-                    _con.Open();
-                 
+                    ca.Add(obj);
 
-                    _dap.Fill(dt);
+                    comboBox1.Items.Add(row["first_name"].ToString());
 
-              
-                    foreach(DataRow row in dt.Rows)
-                    {
-                        ClientAdd obj = new ClientAdd();
-                        
 
-                        obj.client_name = row["first_name"].ToString();
-                        obj.client_id = Convert.ToInt64(row["client_id"]);
-
-                        ca.Add(obj);
-                        
-                        comboBox1.Items.Add(row["first_name"].ToString()); 
-                     
-                        
-                    }
-
-                    _con.Close();
                 }
 
 
+            }
 
-                string quey2 = "SELECT * FROM DOCTOR";
-                using (SqlCommand _cmd =new SqlCommand(quey2, _con))
+
+
+            string quey2 = "SELECT * FROM DOCTOR";
+            using (SqlCommand _cmd = new SqlCommand(quey2))
+            {
+
+                DataTable dt = new DataTable();
+                dt = (DataTable)datatable.data(_cmd);
+
+
+                foreach (DataRow row in dt.Rows)
                 {
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
-                    _con.Open();
+                    AddDoctor obj = new AddDoctor();
+                    obj.doctor_name = row["doctor_name"].ToString();
+                    obj.doctor_id = Convert.ToInt32(row["doctor_id"]);
 
+                    da.Add(obj);
+                    comboBox2.Items.Add(row["doctor_name"].ToString());
 
-                    _dap.Fill(dt);
-
-                    foreach (DataRow row in dt.Rows )
-                    {
-                        AddDoctor obj = new AddDoctor();
-                        obj.doctor_name = row["doctor_name"].ToString();
-                        obj.doctor_id = Convert.ToInt32(row["doctor_id"]);
-
-                        da.Add(obj);
-                        comboBox2.Items.Add(row["doctor_name"].ToString());
-                        
-                    }
-                    
                 }
+
             }
         }
-
+   
+            
+        
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -146,49 +134,107 @@ private void button1_Click(object sender, EventArgs e)
             int doctor_id;
             DateTime date;
             DateTime time;
-            client_id = comboBox2.SelectedIndex;
-            doctor_id = comboBox1.SelectedIndex;
+            client_id = comboBox1.SelectedIndex + 1;
+           doctor_id = comboBox2.SelectedIndex + 1;
+
+            
             date = dateTimePicker1.Value;
             time = dateTimePicker2.Value;
-
-            string connectionString = "server=LAPTOP-VKSFE2LA\\SQLEXPRESS; database= Appointment_Schedular; Trusted_Connection=true; ";
             string clientEmail = string.Empty;
 
-            using (SqlConnection _con = new SqlConnection(connectionString))
+
+                 string connectioString = database.connectionString;
+            using (SqlConnection _con = new SqlConnection(connectioString))
             {
-                // Step 1: Fetch the Client's Email Address
-           
-
-                // Step 2: Insert Appointment into Appointment Table
-                string query = "INSERT INTO APPOINTMENT_TABLE(CLIENT_ID, DOCTOR_ID, APPOINTMENT_DATE, APPOINTMENT_TIME) VALUES(@client_id, @doctor_id, @date, @time)";
-                using (SqlCommand _cmd = new SqlCommand(query, _con))
+          
+                string emailQuery = "SELECT EMAIL FROM CLIENT_TABLE WHERE CLIENT_ID = @client_id";
+                using (SqlCommand emailCmd = new SqlCommand(emailQuery, _con))
                 {
-                    _cmd.Parameters.AddWithValue("@client_id", client_id);
-                    _cmd.Parameters.AddWithValue("@doctor_id", doctor_id);
-                    _cmd.Parameters.AddWithValue("@date", date);
-                    _cmd.Parameters.AddWithValue("@time", time);
-
+                    emailCmd.Parameters.AddWithValue("@client_id", client_id);
                     _con.Open();
-                    int isWorking = _cmd.ExecuteNonQuery();
-                    _con.Close();
-
-                    if (isWorking > 0)
+                    SqlDataReader reader = emailCmd.ExecuteReader();
+                    if (reader.Read())
                     {
-                        MessageBox.Show("Appointment Scheduled Successfully");
+                        clientEmail = reader["EMAIL"].ToString();
+                    }
+                    reader.Close();
+                    _con.Close();
+                }
+            }
+
+
+
+                string query = "INSERT INTO APPOINTMENT_TABLE(CLIENT_ID, DOCTOR_ID, APPOINTMENT_DATE, APPOINTMENT_TIME) VALUES(@client_id, @doctor_id, @date, @time)";
+
+
+            try { 
+            using (SqlCommand _cmd = new SqlCommand(query))
+            {
+                _cmd.Parameters.AddWithValue("@client_id", client_id);
+                _cmd.Parameters.AddWithValue("@doctor_id", doctor_id);
+                _cmd.Parameters.AddWithValue("@date", date);
+                _cmd.Parameters.AddWithValue("@time", time);
+
+                int isWorking = (int)datatable.data(_cmd);
+
+
+                if (isWorking > 0)
+                {
+                    MessageBox.Show("Appointment Scheduled Successfully");
+                    comboBox1.ResetText();
+                    comboBox2.ResetText();
+                    dateTimePicker1.ResetText();
+                    dateTimePicker2.ResetText();
 
                         // Step 3: Send Email Notification
-                    
-                    }
-                    else
-                    {
-                        MessageBox.Show("Data is not Inserted");
-                    }
+                        /*      if (!string.IsNullOrEmpty(clientEmail))
+                              {
+                                  SendEmail(clientEmail, date, time);
+                              }
+                              else
+                              {
+                                  MessageBox.Show("Client email not found. Email notification skipped.");
+                              }*/
+
+                        SendEmail(clientEmail, date, time);
+
                 }
+                else
+                {
+                    MessageBox.Show("Data is not Inserted");
+                }
+            }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error {ex.Message}");
             }
         }
 
-        // Function to Send Email
-     
+        // send email function
+        private void SendEmail(string clientEmail, DateTime date, DateTime time)
+        {
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("kaustubhpatil1211@gmail.com"); 
+                mail.To.Add(clientEmail);
+                mail.Subject = "Appointment Confirmation";
+                mail.Body = $"Dear Client,\n\nYour appointment has been successfully scheduled for {date.ToShortDateString()} at {time.ToShortTimeString()}.\n\nThank you.";
+
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com"); 
+                smtp.Port = 587; 
+                smtp.Credentials = new System.Net.NetworkCredential("kaustubhpatil1211@gmail.com", "bskd quva luuy ybbf"); 
+                smtp.EnableSsl = true; 
+
+                smtp.Send(mail);
+                MessageBox.Show("Email notification sent successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"SMTP Error: {ex.Message}\nStatus Code: \nStackTrace: {ex.StackTrace}");
+            }
+        }
 
 
 

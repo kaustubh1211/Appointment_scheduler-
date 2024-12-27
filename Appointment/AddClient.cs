@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Appointment
 {
@@ -42,9 +43,9 @@ namespace Appointment
 
         private void Back_Click(object sender, EventArgs e)
         {
-            this.Close();
             Form2 f =new Form2();
             f.Show();
+            this.Close();
              
         }
 
@@ -111,64 +112,52 @@ namespace Appointment
 
                 textBox4.Clear();
                 textBox4.Focus();
+                return;
             }
             if (phoneno.Length != 10)
             {
                 MessageBox.Show("Please enter valid 10 number");
                 textBox4.Clear();
                 textBox4.Focus();
+                return;
 
             }
-            // connection string
+    
 
-            string connectionString = "server=LAPTOP-VKSFE2LA\\SQLEXPRESS; database= Appointment_Schedular; Trusted_Connection=true; ";
+        
 
-            using (SqlConnection _con = new SqlConnection(connectionString))
-            {
-
-                string query = "INSERT INTO CLIENT_TABLE(FIRST_NAME , LAST_NAME , EMAIL, PHONE_NO) values(@First_name , @Last_name , @Email, @phone)";
+                string query = "INSERT INTO CLIENT_TABLE(FIRST_NAME , LAST_NAME , EMAIL, PHONE_NO) values(@First_name , @Last_name , @Email, @phone_no)";
 
 
-                using (SqlCommand _cmd = new SqlCommand(query, _con))
+
+                    using(SqlCommand _cmd =new SqlCommand(query))
+                     {
+
+                       _cmd.Parameters.AddWithValue("@FIRST_NAME", First_name);
+                        _cmd.Parameters.AddWithValue("@LAST_NAME", Last_name);
+                        _cmd.Parameters.AddWithValue("@EMAIL", Email);
+                         _cmd.Parameters.AddWithValue("@PHONE_NO", phoneno);
+                        int rowsAffected = (int)datatable.data(_cmd);
+
+                if (rowsAffected > 0)
                 {
-
-
-
-                    _cmd.Parameters.AddWithValue("@First_name ",First_name );
-                    _cmd.Parameters.AddWithValue("@Last_name ", Last_name);
-                    _cmd.Parameters.AddWithValue("@Email ", Email);
-                    _cmd.Parameters.AddWithValue("@phone ", phone);
-
-
-                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
-
-
-                    _con.Open();
-                    int isWorking = _cmd.ExecuteNonQuery();
-
-
-                    _con.Close();
-
-                    if (isWorking > 0)
-                    {
-                        MessageBox.Show("Data Insertes Succesfully" );
-                        textBox1.Clear();
-                        textBox2.Clear();
-                        textBox3.Clear();
-                        textBox4.Clear();
-                        
-                    }
-                    else
-                    {
-
-                        MessageBox.Show("Data is not Inserted");
-
-                    }
-
-
+                    MessageBox.Show("Data insertes succesfully");
+                    textBox1.Clear();
+                    textBox2.Clear();
+                    textBox3.Clear();
+                    textBox4.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Data not inserted");
                 }
 
-            }
+                        }
+
+        
+
+
+            
         }
 
      

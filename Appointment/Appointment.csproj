@@ -59,6 +59,8 @@
     <Compile Include="AddClient.Designer.cs">
       <DependentUpon>AddClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="database.cs" />
+    <Compile Include="datatable.cs" />
     <Compile Include="DoctorAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +151,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\158887222_105542401.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled design %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled design %282%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

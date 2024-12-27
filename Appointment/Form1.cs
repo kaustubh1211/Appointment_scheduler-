@@ -31,49 +31,42 @@ namespace Appointment
 
             username = textBox1.Text;
             password = textBox2.Text;
+     
+     
+            string query = "SELECT * FROM login WHERE username = @username AND login_password = @password";
 
-
-            // connection string
-            string connectionString = "server=LAPTOP-VKSFE2LA\\SQLEXPRESS; database= Appointment_Schedular; Trusted_Connection=true; ";
-
-
-            using (SqlConnection _con = new SqlConnection(connectionString)) {
-
-                string query = "SELECT * FROM login WHERE username = @username AND login_password = @password";
-                using (SqlCommand _cmd = new SqlCommand(query, _con))
+            try
             {
-                    _cmd.Parameters.AddWithValue("@username", username);
-                    _cmd.Parameters.AddWithValue("@password", password);
 
+            using (SqlCommand cmd = new SqlCommand(query))
+            {
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("Password", password);
 
-                    DataTable dt = new DataTable();
+                DataTable dt = new DataTable();
+                dt = (DataTable)datatable.data(cmd);
 
-                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
+                if (dt.Rows.Count > 0)
+                {
 
-                    
-                    _con.Open();
-                    _dap.Fill(dt);
-                    _con.Close();
+                    Form2 dash = new Form2();
+                    dash.Show();
+                    this.Hide();
 
-                    // check the rows for condition 
-                    // if no matching from database the dt.rows.Count is 0
-                    if (dt.Rows.Count > 0)
-                    {
-                
-                        Form2 dash = new Form2();
-                        dash.Show();
-                        this.Hide();
-                    }
-                    else
-                    {
+                }
+                else
+                {
 
-                        MessageBox.Show("Invalid credentials Please try again");
-                    }
+                    MessageBox.Show("Invalid credentials Please try again");
                 }
 
             }
 
-
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error {ex.Message}");
+            }
 
         
         }

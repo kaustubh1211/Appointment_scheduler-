@@ -49,7 +49,7 @@
             // 
             // Submit
             // 
-            this.Submit.BackColor = System.Drawing.Color.Silver;
+            this.Submit.BackColor = System.Drawing.Color.Transparent;
             this.Submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Submit.Location = new System.Drawing.Point(538, 380);
             this.Submit.Name = "Submit";
@@ -144,7 +144,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.LightCyan;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(559, 37);
+            this.label1.Location = new System.Drawing.Point(560, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(203, 38);
             this.label1.TabIndex = 9;
@@ -165,8 +165,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1406, 518);
+            this.BackgroundImage = global::Appointment.Properties.Resources.Untitled_design__1_;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1406, 485);
             this.Controls.Add(this.Back);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox4);

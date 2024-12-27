@@ -38,7 +38,7 @@
             // Submit
             // 
             this.Submit.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Submit.Location = new System.Drawing.Point(559, 235);
+            this.Submit.Location = new System.Drawing.Point(520, 259);
             this.Submit.Name = "Submit";
             this.Submit.Size = new System.Drawing.Size(210, 50);
             this.Submit.TabIndex = 0;
@@ -68,15 +68,16 @@
             // 
             // DoctorName
             // 
-            this.DoctorName.Location = new System.Drawing.Point(559, 148);
+            this.DoctorName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DoctorName.Location = new System.Drawing.Point(559, 140);
             this.DoctorName.Name = "DoctorName";
-            this.DoctorName.Size = new System.Drawing.Size(346, 22);
+            this.DoctorName.Size = new System.Drawing.Size(346, 30);
             this.DoctorName.TabIndex = 3;
             this.DoctorName.TextChanged += new System.EventHandler(this.DoctorName_TextChanged);
             // 
             // Back
             // 
-            this.Back.Location = new System.Drawing.Point(60, 23);
+            this.Back.Location = new System.Drawing.Point(61, 22);
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(142, 52);
             this.Back.TabIndex = 5;
@@ -88,6 +89,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Appointment.Properties.Resources.Untitled_design__2_;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1195, 493);
             this.Controls.Add(this.Back);
             this.Controls.Add(this.DoctorName);

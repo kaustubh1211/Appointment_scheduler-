@@ -21,39 +21,26 @@ namespace Appointment
 
         private void Back_Click(object sender, EventArgs e)
         {
-            this.Close();
             Form2 f = new Form2();
             f.Show();
+            this.Close();
         }
 
         private void Submit_Click(object sender, EventArgs e)
         {
             string doctorname;
             doctorname = DoctorName.Text.Trim();
-            string connectionString = "server=LAPTOP-VKSFE2LA\\SQLEXPRESS; database= Appointment_Schedular; Trusted_Connection=true; ";
-
-            using (SqlConnection _con = new SqlConnection(connectionString))
-            {
-
+            string connectionString = database.connectionString;
                 string query = "INSERT INTO DOCTOR(doctor_name) values(@doctorname)";
+         
 
 
-                using (SqlCommand _cmd = new SqlCommand(query, _con))
+                using (SqlCommand _cmd = new SqlCommand(query))
                 {
-
-
-
                     _cmd.Parameters.AddWithValue("@doctorname ", doctorname);
 
 
-                    SqlDataAdapter _dap = new SqlDataAdapter(_cmd);
-
-
-                    _con.Open();
-                   int isWorking= _cmd.ExecuteNonQuery();
-
-
-                    _con.Close();
+                int isWorking = (int)datatable.data(_cmd);
 
                     if (isWorking > 0)
                     {
@@ -70,7 +57,7 @@ namespace Appointment
                 
                 }
 
-            }
+            
 
         }
 
