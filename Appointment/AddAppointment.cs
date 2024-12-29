@@ -36,9 +36,9 @@ namespace Appointment
 
         private void back_Click(object sender, EventArgs e)
         {
-            this.Close();
             Form2 f = new Form2();
             f.Show();
+            this.Close();
         }
 
 
@@ -141,6 +141,7 @@ private void button1_Click(object sender, EventArgs e)
             date = dateTimePicker1.Value;
             time = dateTimePicker2.Value;
             string clientEmail = string.Empty;
+            string clienName =string.Empty;
 
 
                  string connectioString = database.connectionString;
@@ -161,6 +162,7 @@ private void button1_Click(object sender, EventArgs e)
                     _con.Close();
                 }
             }
+
 
 
 
@@ -239,6 +241,11 @@ private void button1_Click(object sender, EventArgs e)
 
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }

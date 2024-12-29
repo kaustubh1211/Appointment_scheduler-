@@ -37,7 +37,7 @@ namespace Appointment
 
                     DataTable dt = new DataTable();
 
-                dt =(DataTable) datatable.data(_cmd); 
+                dt = (DataTable) datatable.data(_cmd); 
 
 
               
@@ -68,7 +68,9 @@ namespace Appointment
                 dataGridView1.BorderStyle = BorderStyle.Fixed3D;
                 // color row
 
-
+                dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+                dataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.Black;
 
 
 
@@ -93,8 +95,6 @@ namespace Appointment
                 }
 
                 // update status
-          
-                
 
                     string updateQuery = "UPDATE appointment_table SET appointment_status = @status WHERE appointment_id = @id";
                    
@@ -165,6 +165,7 @@ namespace Appointment
                 }
             
         }
+    
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

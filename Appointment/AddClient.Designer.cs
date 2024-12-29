@@ -62,22 +62,24 @@
             // FirstName
             // 
             this.FirstName.AutoSize = true;
-            this.FirstName.BackColor = System.Drawing.Color.White;
-            this.FirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FirstName.Location = new System.Drawing.Point(399, 123);
+            this.FirstName.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.FirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FirstName.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.FirstName.Location = new System.Drawing.Point(399, 130);
             this.FirstName.Name = "FirstName";
-            this.FirstName.Size = new System.Drawing.Size(131, 29);
+            this.FirstName.Size = new System.Drawing.Size(141, 29);
             this.FirstName.TabIndex = 1;
             this.FirstName.Text = "First Name";
             // 
             // LastName
             // 
             this.LastName.AutoSize = true;
-            this.LastName.BackColor = System.Drawing.Color.White;
-            this.LastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LastName.Location = new System.Drawing.Point(399, 170);
+            this.LastName.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.LastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LastName.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.LastName.Location = new System.Drawing.Point(399, 177);
             this.LastName.Name = "LastName";
-            this.LastName.Size = new System.Drawing.Size(128, 29);
+            this.LastName.Size = new System.Drawing.Size(137, 29);
             this.LastName.TabIndex = 2;
             this.LastName.Text = "Last Name";
             // 
@@ -85,11 +87,12 @@
             // 
             this.Email.AllowDrop = true;
             this.Email.AutoSize = true;
-            this.Email.BackColor = System.Drawing.Color.White;
-            this.Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Email.Location = new System.Drawing.Point(399, 225);
+            this.Email.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Email.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.Email.Location = new System.Drawing.Point(399, 232);
             this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(74, 29);
+            this.Email.Size = new System.Drawing.Size(79, 29);
             this.Email.TabIndex = 3;
             this.Email.Text = "Email";
             this.Email.Click += new System.EventHandler(this.Email_Click);
@@ -97,41 +100,47 @@
             // PhoneNo
             // 
             this.PhoneNo.AutoSize = true;
-            this.PhoneNo.BackColor = System.Drawing.Color.White;
-            this.PhoneNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PhoneNo.Location = new System.Drawing.Point(399, 273);
+            this.PhoneNo.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.PhoneNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PhoneNo.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.PhoneNo.Location = new System.Drawing.Point(395, 280);
             this.PhoneNo.Name = "PhoneNo";
-            this.PhoneNo.Size = new System.Drawing.Size(121, 29);
+            this.PhoneNo.Size = new System.Drawing.Size(129, 29);
             this.PhoneNo.TabIndex = 4;
             this.PhoneNo.Text = "Phone No";
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(585, 130);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(368, 22);
+            this.textBox1.Size = new System.Drawing.Size(368, 27);
             this.textBox1.TabIndex = 5;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(585, 170);
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(585, 177);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(368, 22);
+            this.textBox2.Size = new System.Drawing.Size(368, 27);
             this.textBox2.TabIndex = 6;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(585, 225);
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Location = new System.Drawing.Point(585, 232);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(368, 22);
+            this.textBox3.Size = new System.Drawing.Size(368, 27);
             this.textBox3.TabIndex = 7;
             this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox4
             // 
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.Location = new System.Drawing.Point(585, 280);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(368, 22);
+            this.textBox4.Size = new System.Drawing.Size(368, 27);
             this.textBox4.TabIndex = 8;
             this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 

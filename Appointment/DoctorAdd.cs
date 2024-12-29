@@ -32,9 +32,9 @@ namespace Appointment
             doctorname = DoctorName.Text.Trim();
             string connectionString = database.connectionString;
                 string query = "INSERT INTO DOCTOR(doctor_name) values(@doctorname)";
-         
 
 
+            try { 
                 using (SqlCommand _cmd = new SqlCommand(query))
                 {
                     _cmd.Parameters.AddWithValue("@doctorname ", doctorname);
@@ -56,6 +56,12 @@ namespace Appointment
 
                 
                 }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Something went wrong: {ex.Message}");
+            }
 
             
 
